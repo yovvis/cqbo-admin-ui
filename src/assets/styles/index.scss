@@ -1,0 +1,118 @@
+// reset.scss最先加载，然后是组件样式，最后是 variables.scss 作用于 scoped
+@use 'ant-design-vue/dist/reset.css';
+
+:root {
+  --fui-color-primary: #1677ff;
+  --fui-color-success: #52c41a;
+  --fui-color-warning: #faad14;
+  --fui-color-error: #ff4d4f;
+  --fui-color-info: #1677ff;
+  --fui-color-text-base: #000;
+  --fui-color-bg-base: #fff;
+  --fui-color-bg-container: #fff;
+  --fui-color-text: rgba(0, 0, 0, 0.88);
+  --fui-color-text-secondary: rgba(0, 0, 0, 0.65);
+  --fui-color-text-tertiary: rgba(0, 0, 0, 0.45);
+  --fui-color-text-quaternary: rgba(0, 0, 0, 0.25);
+  --fui-color-fill: rgba(0, 0, 0, 0.15);
+  --fui-color-fill-secondary: rgba(0, 0, 0, 0.06);
+  --fui-color-fill-tertiary: rgba(0, 0, 0, 0.04);
+  --fui-color-fill-quaternary: rgba(0, 0, 0, 0.02);
+  --fui-color-bg-layout: #f5f5f5;
+  --fui-color-bg-elevated: #ffffff;
+  --fui-color-bg-spotlight: rgba(0, 0, 0, 0.85);
+  --fui-color-border: #d9d9d9;
+  --fui-color-border-secondary: #f0f0f0;
+  --fui-color-primary-bg: #e6f4ff;
+  --fui-color-primary-bg-hover: #bae0ff;
+  --fui-color-primary-border: #91caff;
+  --fui-color-primary-border-hover: #69b1ff;
+  --fui-color-primary-hover: #4096ff;
+  --fui-color-primary-active: #0958d9;
+  --fui-color-primary-text-hover: #4096ff;
+  --fui-color-primary-text: #1677ff;
+  --fui-color-primary-text-active: #0958d9;
+  --fui-color-success-bg: #f6ffed;
+  --fui-color-success-bg-hover: #d9f7be;
+  --fui-color-success-border: #b7eb8f;
+  --fui-color-success-border-hover: #95de64;
+  --fui-color-success-hover: #95de64;
+  --fui-color-success-active: #389e0d;
+  --fui-color-success-text-hover: #73d13d;
+  --fui-color-success-text: #52c41a;
+  --fui-color-success-text-active: #389e0d;
+  --fui-color-error-bg: #fff2f0;
+  --fui-color-error-bg-hover: #fff1f0;
+  --fui-color-error-border: #ffccc7;
+  --fui-color-error-border-hover: #ffa39e;
+  --fui-color-error-hover: #ff7875;
+  --fui-color-error-active: #d9363e;
+  --fui-color-error-text-hover: #ff7875;
+  --fui-color-error-text: #ff4d4f;
+  --fui-color-error-text-active: #d9363e;
+  --fui-color-warning-bg: #fffbe6;
+  --fui-color-warning-bg-hover: #fff1b8;
+  --fui-color-warning-border: #ffe58f;
+  --fui-color-warning-border-hover: #ffd666;
+  --fui-color-warning-hover: #ffd666;
+  --fui-color-warning-active: #d48806;
+  --fui-color-warning-text-hover: #ffc53d;
+  --fui-color-warning-text: #faad14;
+  --fui-color-warning-text-active: #d48806;
+  --fui-color-info-bg: #e6f4ff;
+  --fui-color-info-bg-hover: #bae0ff;
+  --fui-color-info-border: #91caff;
+  --fui-color-info-border-hover: #69b1ff;
+  --fui-color-info-hover: #69b1ff;
+  --fui-color-info-active: #0958d9;
+  --fui-color-info-text-hover: #4096ff;
+  --fui-color-info-text: #1677ff;
+  --fui-color-info-text-active: #0958d9;
+  --fui-color-bg-mask: rgba(0, 0, 0, 0.45);
+  --fui-color-white: #fff;
+  --fui-color-black: #000;
+  --fui-color-mint: #bdfcc9;
+}
+
+html {
+  --text-color: rgba(0, 0, 0, 0.85);
+  --text-color-1: rgba(0, 0, 0, 0.45);
+  --text-color-2: rgba(0, 0, 0, 0.2);
+  --bg-color: #fff;
+  --hover-color: rgba(0, 0, 0, 0.025);
+  --bg-color-container: #f0f2f5;
+  --c-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+}
+
+html.dark {
+  --text-color: rgba(229, 224, 216, 0.85);
+  --text-color-1: rgba(229, 224, 216, 0.45);
+  --text-color-2: rgba(229, 224, 216, 0.45);
+  --bg-color: rgb(36, 37, 37);
+  --hover-color: rgb(42, 44, 55);
+  --bg-color-container: rgb(42, 44, 44);
+  --c-shadow: rgba(13, 13, 13, 0.65) 0 2px 8px 0;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+#app,
+body,
+html {
+  height: 100%;
+}
+
+#app {
+  overflow-x: hidden;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}

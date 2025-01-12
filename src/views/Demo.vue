@@ -2,9 +2,7 @@
   <div>
     <h1>UnoCSS</h1>
     <div class="demo">
-      <div class="w-100 text-4">
-          小家伙
-      </div>
+      <div class="w-100 text-4">小家伙</div>
     </div>
   </div>
 </template>
@@ -15,6 +13,6 @@
 .demo {
   width: 100px;
   height: 80px;
-  background: $default-color;
+  background: $fui-color-mint;
 }
 </style>

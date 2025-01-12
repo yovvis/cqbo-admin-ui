@@ -14,14 +14,14 @@ import MenuLogo from '@/layouts/components/menu/MenuLogo.vue'
 
 <style scoped lang="scss">
 #basic-sider {
-  background: $white-color;
+  background: $fui-color-white;
   border-right: 0.5px solid #eee;
   padding-top: 8px;
 
   :deep(.ant-layout-sider-zero-width-trigger) {
     //top: 100% !important;
     //inset-inline-end: -20px !important;
-    background-color: $default-color !important;
+    background-color: $fui-color-mint !important;
   }
 
   .ant-layout-sider {

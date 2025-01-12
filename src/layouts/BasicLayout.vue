@@ -25,7 +25,7 @@ import BasicHeader from '@/layouts/components/header/BasicHeader.vue'
   :deep(.ant-layout-content) {
     padding: 10px;
     height: 100%;
-    background: $white-color;
+    background: $fui-color-white;
   }
 }
 </style>

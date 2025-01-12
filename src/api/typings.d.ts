@@ -11,6 +11,12 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponseListMenuVO = {
+    code?: number
+    data?: MenuVO[]
+    message?: string
+  }
+
   type BaseResponseListSelectItem = {
     code?: number
     data?: SelectItem[]
@@ -29,9 +35,9 @@ declare namespace API {
     message?: string
   }
 
-  type BaseResponsePageMenuVO = {
+  type BaseResponsePageMenu = {
     code?: number
-    data?: PageMenuVO
+    data?: PageMenu
     message?: string
   }
 
@@ -113,6 +119,8 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
+    /** 国际化 */
+    locale?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
     /** 菜单可见：0-显示;1-隐藏 */
@@ -240,6 +248,8 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
+    /** 国际化 */
+    locale?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
     /** 菜单可见：0-显示;1-隐藏 */
@@ -265,14 +275,14 @@ declare namespace API {
     asc?: boolean
   }
 
-  type PageMenuVO = {
-    records?: MenuVO[]
+  type PageMenu = {
+    records?: Menu[]
     total?: number
     size?: number
     current?: number
     orders?: OrderItem[]
-    optimizeCountSql?: PageMenuVO
-    searchCount?: PageMenuVO
+    optimizeCountSql?: PageMenu
+    searchCount?: PageMenu
     optimizeJoinOfCountSql?: boolean
     maxLimit?: number
     countId?: string
@@ -397,21 +407,37 @@ declare namespace API {
 
   type User = {
     id?: number
+    /** 账号 */
     userAccount?: string
+    /** 密码 */
     userPassword?: string
+    /** 微信开放平台id */
     unionId?: string
+    /** 公众号openId */
     mpOpenId?: string
+    /** 用户昵称 */
     userName?: string
+    /** 用户头像 */
     userAvatar?: string
+    /** 用户简介 */
     userProfile?: string
+    /** 用户角色：user/admin/ban */
     userRole?: string
+    /** 会员编号 */
     vipNumber?: number
+    /** 会员兑换码 */
     vipCode?: string
+    /** 会员过期时间 */
     vipExpireTime?: string
+    /** 分享码 */
     shareCode?: string
+    /** 邀请用户id */
     inviteUser?: number
+    /** 编辑时间 */
     editTime?: string
+    /** 创建时间 */
     createTime?: string
+    /** 更新时间 */
     updateTime?: string
     isDelete?: number
   }

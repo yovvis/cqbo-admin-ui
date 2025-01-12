@@ -26,9 +26,20 @@ export async function deleteMenu(body: API.DeleteRequest, options?: { [key: stri
   })
 }
 
+/** 获取菜单列表(脱敏) POST /rest/sys/menu/getMenuList */
+export async function getMenuList(options?: { [key: string]: any }) {
+  return request<API.BaseResponseListMenuVO>('/rest/sys/menu/getMenuList', {
+    method: 'POST',
+    ...(options || {}),
+  })
+}
+
 /** 分页获取资源列表 POST /rest/sys/menu/listPage */
-export async function listMenuPage(body: API.MenuQueryRequest, options?: { [key: string]: any }) {
-  return request<API.BaseResponsePageMenuVO>('/rest/sys/menu/listPage', {
+export async function listPermissionPage(
+  body: API.MenuQueryRequest,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponsePageMenu>('/rest/sys/menu/listPage', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

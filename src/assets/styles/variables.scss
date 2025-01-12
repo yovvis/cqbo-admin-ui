@@ -1,19 +1,6 @@
-$white-color: #ffffff;
-$black-color: #000000;
-$default-color: #bdfcc9; // 薄荷色
-$primary-color: #a37df3; // 全局主色
-$link-color: #1890ff; // 链接色
-$success-color: #52c41a; // 成功色
-$warning-color: #faad14; // 警告色
-$error-color: #f5222d; // 错误色
-$font-size-base: 14px; // 主字号
-$heading-color: rgba(0, 0, 0, 0.85); // 标题色
-$text-color: rgba(0, 0, 0, 0.65); // 主文本色
-$text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
-$disabled-color: rgba(0, 0, 0, 0.25); // 失效色
-$border-radius-base: 4px; // 组件/浮层圆角
-$border-color-base: #d9d9d9; // 边框色
-$box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
+$fui-color-white: var(--fui-color-white);
+$fui-color-black: var(--fui-color-black);
+$fui-color-mint: var(--fui-color-mint);
 
 /**
    Ant Design Vue组件
@@ -32,6 +19,7 @@ $box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
   .ant-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 12px;
 
     svg {
@@ -46,6 +34,7 @@ $box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
   .ant-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 12px;
 
     svg {
@@ -70,11 +59,11 @@ $box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
 }
 
 .btn-reset {
-  color: $white-color;
-  background-color: $warning-color;
+  color: var(--fui-color-white);
+  background-color: var(--fui-color-warning);
 
   &:hover {
-    color: $white-color !important;
-    background-color: #fdbf43;
+    color: var(--fui-color-white) !important;
+    background-color: var(--fui-color-warning-hover);
   }
 }

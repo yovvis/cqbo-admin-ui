@@ -56,13 +56,13 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path:"/system/demo",
+        path: '/system/demo',
         name: 'demo',
         component: () => import('@/views/Demo.vue'),
         meta: {
           label: '测试组件',
-        }
-      }
+        },
+      },
     ],
   },
   {

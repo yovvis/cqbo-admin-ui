@@ -1,21 +1,21 @@
 <template>
-    <a-modal
-      :open="props.open"
-      :title="props.title"
-      :width="props.width"
-      @cancel="onClose"
-      :destroyOnClose="true"
-    >
-      <template #footer>
-        <a-button danger @click="onClose">取消</a-button>
-        <a-button type="primary" key="submit" :loading="loading" @click="onConfirm">确认</a-button>
-      </template>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-    </a-modal>
+  <a-modal
+    :open="props.open"
+    :title="props.title"
+    :width="props.width"
+    @cancel="onClose"
+    :destroyOnClose="true"
+  >
+    <template #footer>
+      <a-button danger @click="onClose">取消</a-button>
+      <a-button type="primary" key="submit" :loading="loading" @click="onConfirm">确认</a-button>
+    </template>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </a-modal>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

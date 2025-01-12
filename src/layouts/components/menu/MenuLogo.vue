@@ -6,10 +6,7 @@
     </div>
   </router-link>
 </template>
-<script setup lang="ts">
-
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
 .title-bar {
@@ -17,7 +14,7 @@
   align-items: center;
 
   .title {
-    color: $black-color;
+    color: $fui-color-black;
     font-size: 16px;
   }
 

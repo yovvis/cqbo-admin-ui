@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { deleteMenu, listMenuPage } from '@/api/menuController.ts'
+import { deleteMenu, listPermissionPage } from '@/api/menuController.ts'
 import { message, Table } from 'ant-design-vue'
 import dayjs from 'dayjs'
 import { computed, h, ref, unref } from 'vue'
@@ -239,7 +239,7 @@ const menuLabels = reactive<any>({
 })
 // 初始化数据
 const fetchData = async () => {
-  const res = await listMenuPage({
+  const res = await listPermissionPage({
     ...searchParams,
   })
   if (res.data.code === 0 && res.data.data) {

@@ -21,4 +21,5 @@ dev_dependencies(new)
 5. unplugin-icons
 6. unplugin-vue-components
 7. vite-plugin-inspect
+8. unocss
 ~~~

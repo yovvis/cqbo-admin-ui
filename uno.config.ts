@@ -4,11 +4,13 @@ import {
   presetIcons,
   presetUno,
   transformerDirectives,
-  transformerVariantGroup
+  transformerVariantGroup,
 } from 'unocss'
-//
+import antdUnoTheme from './themes/antd-uno-themes.json'
+
 export default defineConfig({
-  presets:[
+  theme: { ...antdUnoTheme },
+  presets: [
     presetAttributify(),
     presetUno(),
     presetIcons({
@@ -17,7 +19,7 @@ export default defineConfig({
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  rules:[],
+  rules: [],
   shortcuts: [
     // 垂直水平居中
     ['flex-center', 'flex items-center justify-center'],
