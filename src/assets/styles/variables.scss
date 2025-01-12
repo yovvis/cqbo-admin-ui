@@ -1,0 +1,80 @@
+$white-color: #ffffff;
+$black-color: #000000;
+$default-color: #bdfcc9; // 薄荷色
+$primary-color: #a37df3; // 全局主色
+$link-color: #1890ff; // 链接色
+$success-color: #52c41a; // 成功色
+$warning-color: #faad14; // 警告色
+$error-color: #f5222d; // 错误色
+$font-size-base: 14px; // 主字号
+$heading-color: rgba(0, 0, 0, 0.85); // 标题色
+$text-color: rgba(0, 0, 0, 0.65); // 主文本色
+$text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
+$disabled-color: rgba(0, 0, 0, 0.25); // 失效色
+$border-radius-base: 4px; // 组件/浮层圆角
+$border-color-base: #d9d9d9; // 边框色
+$box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
+
+/**
+   Ant Design Vue组件
+ */
+.ant-menu-sub {
+  min-width: 96px !important; // 菜单下拉
+}
+
+/**
+  自定义 UI样式
+ */
+// 搜索样式
+.fui-toolbar {
+  margin: 0 0 10px 2px;
+
+  .ant-btn {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    svg {
+    }
+  }
+}
+
+// 表单样式
+.fui-form {
+  margin: 0 0 12px 2px;
+
+  .ant-btn {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    svg {
+    }
+  }
+}
+
+// 内容样式
+.fui-content {
+  .ant-btn {
+    font-size: 12px;
+  }
+}
+
+.btn-edit-rol {
+  color: #5bc0de;
+
+  &:hover {
+    color: #69cded !important;
+    background-color: #f3f2f2 !important;
+  }
+}
+
+.btn-reset {
+  color: $white-color;
+  background-color: $warning-color;
+
+  &:hover {
+    color: $white-color !important;
+    background-color: #fdbf43;
+  }
+}
