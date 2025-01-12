@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
 import notLoginUser from '@/assets/notLogin.png'
-import { useUserStore } from '@/store/userStore.ts'
+import { useUserStore } from '@/store/user.ts'
 import { logout } from '@/api/authController.ts'
 import { message } from 'ant-design-vue'
 import { useRouter } from 'vue-router'

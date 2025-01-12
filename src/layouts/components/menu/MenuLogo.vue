@@ -1,7 +1,7 @@
 <template>
   <router-link to="/">
     <div class="title-bar">
-      <img class="logo" src="@/assets/vue.svg" alt="logo" />
+      <img class="logo" src="../../../../public/logo.svg" alt="logo" />
       <span class="title">亿智狐管理系统</span>
     </div>
   </router-link>

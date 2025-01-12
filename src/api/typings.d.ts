@@ -119,14 +119,18 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
-    /** 国际化 */
-    locale?: string
+    /** 重定向路径 */
+    redirect?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
+    /** 是否套用iframe */
+    isIframe?: number
     /** 菜单可见：0-显示;1-隐藏 */
-    visiable?: number
+    hideInMenu?: number
     /** 菜单图标 */
     icon?: string
+    /** 国际化 */
+    locale?: string
     /** 上级菜单名称 */
     parentName?: string
     /** 排序 */
@@ -153,12 +157,18 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
+    /** 重定向路径 */
+    redirect?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
+    /** 是否套用iframe */
+    isIframe?: number
     /** 菜单可见：0-显示;1-隐藏 */
-    visiable?: number
+    hideInMenu?: number
     /** 图标 */
     icon?: string
+    /** 国际化 */
+    locale?: string
     /** 父菜单名称 */
     parentName?: string
     /** 创建时间 */
@@ -192,12 +202,18 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
+    /** 重定向路径 */
+    redirect?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
+    /** 是否套用iframe */
+    isIframe?: number
     /** 菜单可见：0-显示;1-隐藏 */
-    visiable?: number
+    hideInMenu?: number
     /** 图标 */
     icon?: string
+    /** 国际化 */
+    locale?: string
     /** 父菜单名称 */
     parentName?: string
   }
@@ -217,12 +233,18 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
+    /** 重定向路径 */
+    redirect?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
+    /** 是否套用iframe */
+    isIframe?: number
     /** 菜单可见：0-显示;1-隐藏 */
-    visiable?: number
+    hideInMenu?: number
     /** 图标 */
     icon?: string
+    /** 国际化 */
+    locale?: string
     /** 父菜单名称 */
     parentName?: string
     /** 子菜单 */
@@ -248,14 +270,18 @@ declare namespace API {
     path?: string
     /** 组件路径 */
     url?: string
-    /** 国际化 */
-    locale?: string
+    /** 重定向路径 */
+    redirect?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
+    /** 是否套用iframe */
+    isIframe?: number
     /** 菜单可见：0-显示;1-隐藏 */
-    visiable?: number
+    hideInMenu?: number
     /** 图标 */
     icon?: string
+    /** 国际化 */
+    locale?: string
     /** 父菜单名称 */
     parentName?: string
     /** 创建时间 */
@@ -263,7 +289,7 @@ declare namespace API {
     /** 更新时间 */
     updateTime?: string
     /** 子菜单 */
-    children?: Menu[]
+    children?: MenuVO[]
     /** 值 */
     value?: number
     /** 文本 */

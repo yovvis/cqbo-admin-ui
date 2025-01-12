@@ -1,9 +1,13 @@
 <template>
-  <a-config-provider :locale="zhCN">
+  <a-config-provider :theme="theme" :locale="zhCN">
     <router-view />
   </a-config-provider>
 </template>
 <script setup lang="ts">
-import zhCN from 'ant-design-vue/es/locale/zh_CN' //ant-design-vue自带，只需要引入
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import { useAppStore } from '@/store/app.ts'
+
+const appStore = useAppStore()
+const { theme } = storeToRefs(appStore)
 </script>
 <style scoped lang="scss"></style>

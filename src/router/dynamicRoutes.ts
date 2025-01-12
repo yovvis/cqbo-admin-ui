@@ -1,21 +1,21 @@
 import type { RouteRecordRaw } from 'vue-router'
-import BasicLayout from '@/layouts/BasicLayout.vue'
+import Layout from '@/layouts/index.vue'
 // 路由菜单
-const routes: Array<RouteRecordRaw> = [
+const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: BasicLayout,
+    component: Layout,
     redirect: '/dashboard',
     meta: {
-      hide: true,
+      hideInMenu: true,
     },
     children: [
       {
         path: '/dashboard',
         name: 'Dashboard',
-        component: () => import('@/views/dashboard/DashBoardView.vue'),
+        component: () => import('@/pages/dashboard/DashBoardView.vue'),
         meta: {
-          label: '控制台',
+          title: '控制台',
           icon: 'ri:dashboard-3-line',
         },
       },
@@ -25,42 +25,42 @@ const routes: Array<RouteRecordRaw> = [
     path: '/system',
     name: 'system',
     redirect: '/system/userlist',
-    component: BasicLayout,
+    component: Layout,
     meta: {
-      label: '后台管理',
+      title: '后台管理',
       icon: 'ri:settings-3-line',
     },
     children: [
       {
         path: '/system/userlist',
         name: 'userlist',
-        component: () => import('@/views/system/user/UserListView.vue'),
+        component: () => import('@/pages/system/user/UserListView.vue'),
         meta: {
-          label: '用户管理',
+          title: '用户管理',
         },
       },
       {
         path: '/system/rolelist',
         name: 'rolelist',
-        component: () => import('@/views/system/role/RoleListView.vue'),
+        component: () => import('@/pages/system/role/RoleListView.vue'),
         meta: {
-          label: '角色管理',
+          title: '角色管理',
         },
       },
       {
         path: '/system/menulist',
         name: 'menulist',
-        component: () => import('@/views/system/menu/MenuListView.vue'),
+        component: () => import('@/pages/system/menu/MenuListView.vue'),
         meta: {
-          label: '菜单管理',
+          title: '菜单管理',
         },
       },
       {
         path: '/system/demo',
         name: 'demo',
-        component: () => import('@/views/Demo.vue'),
+        component: () => import('@/pages/Demo.vue'),
         meta: {
-          label: '测试组件',
+          title: '测试组件',
         },
       },
     ],
@@ -68,18 +68,18 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/user/login',
     name: 'userlogin',
-    component: () => import('@/views/account/UserLoginView.vue'),
+    component: () => import('@/pages/account/UserCenter.vue'),
     meta: {
-      hide: true,
+      hideInMenu: true,
     },
   },
   {
     path: '/user/register',
     name: 'userregister',
-    component: () => import('@/views/account/UserRegisterView.vue'),
+    component: () => import('@/pages/account/UserSetting.vue'),
     meta: {
-      hide: true,
+      hideInMenu: true,
     },
   },
 ]
-export default routes
+export default dynamicRoutes

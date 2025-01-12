@@ -11,7 +11,7 @@ import UnoCSS from 'unocss/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { fileURLToPath, URL } from 'node:url'
 
-const srcPath = fileURLToPath(new URL('../src', import.meta.url))
+const srcPath = fileURLToPath(new URL('../types', import.meta.url))
 
 export function createVitePlugins(env: Record<string, string>, command: string, mode: string) {
   console.log('Command:', command)
@@ -22,7 +22,7 @@ export function createVitePlugins(env: Record<string, string>, command: string, 
     vueJsx(),
     AutoImport({
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue', 'vue-router', 'pinia'],
+      imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
       dts: path.resolve(srcPath, 'auto-imports.d.ts'),
     }),
     Components({

@@ -11,13 +11,13 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { filterRoutes, getMenuItems } from '@/store/menuStore.ts'
-import routes from '@/router/routes.ts'
+import dynamicRoutes from '@/router/dynamicRoutes.ts'
 import { useRoute, useRouter } from 'vue-router'
+import { filterRoutes, getMenuItems } from '@/router/generateRoute.ts'
 
 // 菜单项
 const menuItems = computed(() => {
-  const visibleRoutes = filterRoutes(routes)
+  const visibleRoutes = filterRoutes(dynamicRoutes)
   return getMenuItems(visibleRoutes)
 })
 const router = useRouter()
@@ -46,7 +46,7 @@ const setMenuOpen = (result: any) => {
 }
 onMounted(() => {
   selectKeys()
-  setMenuOpen(routes)
+  setMenuOpen(dynamicRoutes)
 })
 
 // 路由跳转事件
