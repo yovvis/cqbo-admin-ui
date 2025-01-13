@@ -3,14 +3,13 @@ import { defineStore } from 'pinia'
 import { getLoginUser } from '@/api/authController.ts'
 import { getMenuList } from '@/api/menuController.ts'
 import { generateFlatRoutes, generateRoutes, generateTreeRoutes } from '@/router/generateRoute.ts'
-import { MenuData } from '@/layouts/pro/typing.ts'
+import { MenuData } from '@/layouts/basic/typing.ts'
 import { DYNAMIC_LOAD_WAY, DynamicLoadEnum } from '@/utils/constant.ts'
 import { rootRoute } from '@/router/constant.ts'
-import type { RouteRecordRaw } from 'vue-router'
 
 export const useUserStore = defineStore('user', () => {
   const loginUser = ref<API.LoginUserVO>({
-    userName: '未登录',
+    userName: '游客123',
   })
 
   /**
@@ -61,5 +60,12 @@ export const useUserStore = defineStore('user', () => {
     return generateTreeRoutes(data)
   }
 
-  return { loginUser, fetchLoginUser, setLoginUser, menuData }
+  return {
+    loginUser,
+    fetchLoginUser,
+    setLoginUser,
+    menuData,
+    routerData,
+    generateDynamicRoutes,
+  }
 })

@@ -13,7 +13,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/dashboard',
         name: 'Dashboard',
-        component: () => import('@/pages/dashboard/DashBoardView.vue'),
+        component: () => import('@/views/dashboard/DashBoard.vue'),
         meta: {
           title: '控制台',
           icon: 'ri:dashboard-3-line',
@@ -34,7 +34,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/userlist',
         name: 'userlist',
-        component: () => import('@/pages/system/user/UserListView.vue'),
+        component: () => import('@/views/system/user/UserListView.vue'),
         meta: {
           title: '用户管理',
         },
@@ -42,7 +42,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/rolelist',
         name: 'rolelist',
-        component: () => import('@/pages/system/role/RoleListView.vue'),
+        component: () => import('@/views/system/role/RoleListView.vue'),
         meta: {
           title: '角色管理',
         },
@@ -50,7 +50,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/menulist',
         name: 'menulist',
-        component: () => import('@/pages/system/menu/MenuListView.vue'),
+        component: () => import('@/views/system/menu/MenuListView.vue'),
         meta: {
           title: '菜单管理',
         },
@@ -58,7 +58,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/demo',
         name: 'demo',
-        component: () => import('@/pages/Demo.vue'),
+        component: () => import('@/views/Demo.vue'),
         meta: {
           title: '测试组件',
         },
@@ -68,7 +68,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: '/user/login',
     name: 'userlogin',
-    component: () => import('@/pages/account/UserCenter.vue'),
+    component: () => import('@/views/account/UserCenter.vue'),
     meta: {
       hideInMenu: true,
     },
@@ -76,7 +76,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: '/user/register',
     name: 'userregister',
-    component: () => import('@/pages/account/UserSetting.vue'),
+    component: () => import('@/views/account/UserSetting.vue'),
     meta: {
       hideInMenu: true,
     },

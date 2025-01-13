@@ -10,6 +10,9 @@ dependencies(new)
 ~~~
 1. axios
 2. ant-design-vue
+3. @vueuse/core
+4. @v-c/utils
+5. lodash-es
 ~~~
 
 dev_dependencies(new)
@@ -22,4 +25,5 @@ dev_dependencies(new)
 6. unplugin-vue-components
 7. vite-plugin-inspect
 8. unocss
+9. @types/lodash-es
 ~~~

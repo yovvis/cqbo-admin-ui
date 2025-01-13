@@ -1,18 +1,20 @@
 import { isUrl } from '@v-c/utils'
 import { defineStore } from 'pinia'
-import { MenuData, MenuDataItem } from '@/layouts/pro/typing.ts'
+import { MenuData } from '@/layouts/basic/typing.ts'
 import { useUserStore } from '@/store/user.ts'
 import { useAppStore } from '@/store/app.ts'
 import { deepFind } from '@/utils/tree.ts'
 
 function toMapMenuData(
   menuData: MenuData,
-  menuDataMap: Map<string, MenuDataItem>,
-  matched: MenuDataItem[] = [],
+  menuDataMap: Map<string, API.MenuVO>,
+  matched: API.MenuVO[] = [],
 ): void {
   menuData.forEach((v) => {
-    menuDataMap.set(v.path, { ...v, matched })
-    if (v.children && v.children.length) toMapMenuData(v.children, menuDataMap, [...matched, v])
+    menuDataMap.set(v.path as string, { ...v, matched })
+    if (v.children && v.children.length) {
+      toMapMenuData(v.children, menuDataMap, [...matched, v])
+    }
   })
 }
 
@@ -22,7 +24,7 @@ export const useLayoutMenuStore = defineStore('layoutMenu', () => {
   const router = useRouter()
   const route = useRoute()
   const { layoutSetting } = storeToRefs(appStore)
-  const menuDataMap = reactive(new Map<string, MenuDataItem>())
+  const menuDataMap = reactive(new Map<string, API.MenuVO>())
   const selectedKeys = ref<string[]>([])
   const openKeys = ref<string[]>([])
   const changeMenu = () => {
@@ -32,45 +34,52 @@ export const useLayoutMenuStore = defineStore('layoutMenu', () => {
       // openKeys.value = []
       selectedKeys.value = []
       if (menu) {
-        if (menu.parentKeys && menu.parentKeys.length) selectedKeys.value = menu.parentKeys
-        else selectedKeys.value = [menu.path]
+        if (menu.parentKeys && menu.parentKeys.length) {
+          selectedKeys.value = menu.parentKeys
+        } else selectedKeys.value = [menu.path] as string[]
       }
       // 设置openkeys
       if (menu?.matched) {
         const newOpenKeys = menu.matched.map((v) => v.path)
         if (!layoutSetting.value.accordionMode)
-          openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])]
-        else openKeys.value = newOpenKeys
+          openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])] as string[]
+        else openKeys.value = newOpenKeys as string[]
       }
     }
   }
-  watch(() => userStore.menuData, (val) => {
-    toMapMenuData(val, menuDataMap)
-    changeMenu()
-  }, { immediate: true, flush: 'post' })
+  watch(
+    () => userStore.menuData,
+    (val) => {
+      toMapMenuData(val, menuDataMap)
+      changeMenu()
+    },
+    { immediate: true, flush: 'post' },
+  )
   const { menuData } = storeToRefs(userStore)
   const findMenuByPath: any = (path: string) => (obj: MenuData) =>
-    deepFind(o => o.path === path)(obj)
+    deepFind((o) => o.path === path)(obj)
   const handleAccordionMode = (innerOpenKeys: string[]) => {
-    const rootSubmenuKeys: string[] | undefined = menuData.value?.map((item) => {
+    const rootSubmenuKeys = menuData.value?.map((item) => {
       return item.path
-    })
-    const latestOpenKey = innerOpenKeys.find(key => !openKeys.value.includes(key))
+    }) as string[]
+    const latestOpenKey = innerOpenKeys.find((key) => !openKeys.value.includes(key))
     if (latestOpenKey) {
       if (!rootSubmenuKeys.includes(latestOpenKey)) {
         // 与 前一项比较 是否为同一级，同级则移除前一项
         const prevKey = innerOpenKeys[innerOpenKeys.length - 2]
         const preMenuItem = findMenuByPath(prevKey)(menuData.value)
         const latestOpenMenuItem = findMenuByPath(latestOpenKey)(menuData.value)
-        if (preMenuItem && latestOpenMenuItem && preMenuItem.parentId === latestOpenMenuItem.parentId)
+        if (
+          preMenuItem &&
+          latestOpenMenuItem &&
+          preMenuItem.parentId === latestOpenMenuItem.parentId
+        )
           innerOpenKeys.splice(innerOpenKeys.indexOf(prevKey), 1)
         openKeys.value = innerOpenKeys
-      }
-      else {
+      } else {
         openKeys.value = [latestOpenKey]
       }
-    }
-    else {
+    } else {
       openKeys.value = innerOpenKeys
     }
   }
@@ -78,21 +87,17 @@ export const useLayoutMenuStore = defineStore('layoutMenu', () => {
   const handleSelectedKeys = (val: string[]) => {
     // 如果点击的是外部的菜单，那么我们就不需要设置成为激活的状态
     const path = val[0]
-    if (!isUrl(path))
-      selectedKeys.value = val
+    if (!isUrl(path)) selectedKeys.value = val
   }
 
   const handleOpenKeys = (val: string[]) => {
-    if (layoutSetting.value.accordionMode)
-      handleAccordionMode(val)
-    else
-      openKeys.value = val
+    if (layoutSetting.value.accordionMode) handleAccordionMode(val)
+    else openKeys.value = val
   }
 
   watch(router.currentRoute, (route) => {
     // 路由发生变化
-    if (route.path === selectedKeys.value[0])
-      return
+    if (route.path === selectedKeys.value[0]) return
     changeMenu()
   })
 

@@ -1,7 +1,7 @@
 import { LayoutSetting } from '../../types/layout.ts'
 
 export default {
-  title: 'Antdv Pro',
+  title: '亿智狐管理系统',
   theme: 'light',
   logo: '/logo.svg',
   collapsed: false,
@@ -26,6 +26,6 @@ export default {
   leftCollapsed: true,
   compactAlgorithm: false,
   headerHeight: 48,
-  copyright: 'Antdv Pro Team 2023',
+  copyright: 'CQBO Team 2024',
   animationName: 'none',
 } as LayoutSetting

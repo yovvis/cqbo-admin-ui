@@ -2,25 +2,13 @@ import type { ExtractPropTypes } from 'vue'
 import { arrayType, booleanType, eventType, numberType, stringType } from '@v-c/utils'
 
 export type CheckedType = boolean | string | number
-export type MenuData = MenuDataItem[]
+export type MenuData = API.MenuVO[]
 
 export type Key = string | number
 
-export interface MenuDataItem extends API.MenuVO {
-  component?: string
-  children?: MenuDataItem[]
-  affix?: boolean
-  parentKeys?: string[]
-  hideInBreadcrumb?: boolean
-  hideChildrenInMenu?: boolean
-  keepAlive?: boolean
-  matched?: MenuDataItem[]
-  target?: '_blank' | '_self' | '_parent'
-}
-
 export type LayoutType = 'side' | 'top'
 
-export type ThemeType = 'light' | 'dark'
+export type ThemeType = 'light' | 'dark' | 'inverted'
 
 export type ContentWidth = 'Fluid' | 'Fixed'
 
@@ -37,7 +25,7 @@ const proLayoutEvents = {
 }
 
 export const proLayoutProps = {
-  layout: stringType<LayoutType>('side'),
+  layout: stringType<LayoutType>('mix'),
   logo: stringType(),
   title: stringType(),
   collapsedWidth: numberType(48),
@@ -63,6 +51,36 @@ export const proLayoutProps = {
   selectedKeys: arrayType<string[]>(),
   copyright: stringType(),
   ...proLayoutEvents,
+}
+
+export interface LayoutSetting {
+  title?: string
+  logo?: string
+  theme: ThemeType
+  collapsed: boolean
+  drawerVisible: boolean
+  colorPrimary?: string
+  layout?: string
+  contentWidth?: 'Fluid' | 'Fixed'
+  fixedHeader?: boolean
+  fixedSider?: boolean
+  splitMenus?: boolean
+  watermark?: boolean
+  header?: boolean
+  footer?: boolean
+  menu?: boolean
+  menuHeader?: boolean
+  colorWeak?: boolean
+  colorGray?: boolean
+  multiTab?: boolean
+  multiTabFixed?: boolean
+  headerHeight?: number
+  copyright?: string
+  keepAlive?: boolean
+  accordionMode?: boolean
+  leftCollapsed?: boolean
+  compactAlgorithm?: boolean
+  animationName?: 'none' | 'slide-fadein-up' | 'slide-fadein-right' | 'zoom-fadein' | 'fadein'
 }
 
 export type ProLayoutProps = Partial<ExtractPropTypes<typeof proLayoutProps>>

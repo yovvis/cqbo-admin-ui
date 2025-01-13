@@ -107,80 +107,81 @@ declare namespace API {
 
   type Menu = {
     id?: number
-    /** 父ID */
-    parentId?: number
     /** 菜单名称 */
     title?: string
-    /** 权限字段 */
-    code?: string
-    /** 路由名称 */
-    name?: string
-    /** 路由path */
-    path?: string
-    /** 组件路径 */
-    url?: string
-    /** 重定向路径 */
-    redirect?: string
-    /** 资源类型：0：目录 1：菜单 2：按钮 */
-    type?: number
-    /** 是否套用iframe */
-    isIframe?: number
-    /** 菜单可见：0-显示;1-隐藏 */
-    hideInMenu?: number
     /** 菜单图标 */
     icon?: string
-    /** 国际化 */
-    locale?: string
-    /** 上级菜单名称 */
-    parentName?: string
+    /** 地址 */
+    path?: string
+    /** 组件 */
+    component?: string
+    /** 重定向路径 */
+    redirect?: string
+    /** 是否固定页签 */
+    affix?: number
+    /** 父ID */
+    parentId?: number
+    /** 路由名称 */
+    name?: string
+    /** 菜单可见：0-显示;1-隐藏 */
+    hideInMenu?: number
+    /** 跳转路径 */
+    url?: string
+    /** 面包屑：0-显示;1-隐藏 */
+    hideInBreadcrumb?: number
+    /** 子菜单：0-显示;1-隐藏 */
+    hideChildrenInMenu?: number
+    /** 保活：0：非 1：是 */
+    keepAlive?: number
+    /** 全连接跳转模式 */
+    target?: string
+    /** 权限字段 */
+    code?: string
+    /** 资源类型：0：目录 1：菜单 2：按钮 */
+    type?: number
     /** 排序 */
     orderNum?: number
     /** 创建时间 */
     createTime?: string
     /** 更新时间 */
     updateTime?: string
-    children?: Menu[]
-    value?: number
-    label?: string
   }
 
   type MenuAddRequest = {
-    /** 父ID */
-    parentId?: number
     /** 菜单名称 */
     title?: string
-    /** 权限字段 */
-    code?: string
-    /** 路由名称 */
-    name?: string
-    /** 路由path */
+    /** 菜单图标 */
+    icon?: string
+    /** 地址 */
     path?: string
-    /** 组件路径 */
-    url?: string
+    /** 组件 */
+    component?: string
     /** 重定向路径 */
     redirect?: string
-    /** 资源类型：0：目录 1：菜单 2：按钮 */
-    type?: number
-    /** 是否套用iframe */
-    isIframe?: number
+    /** 是否固定页签 */
+    affix?: number
+    /** 父ID */
+    parentId?: number
+    /** 路由名称 */
+    name?: string
     /** 菜单可见：0-显示;1-隐藏 */
     hideInMenu?: number
-    /** 图标 */
-    icon?: string
-    /** 国际化 */
-    locale?: string
-    /** 父菜单名称 */
-    parentName?: string
-    /** 创建时间 */
-    createTime?: string
-    /** 更新时间 */
-    updateTime?: string
-    /** 子菜单 */
-    children?: Menu[]
-    /** 值 */
-    value?: number
-    /** 文本 */
-    label?: string
+    /** 跳转路径 */
+    url?: string
+    /** 面包屑：0-显示;1-隐藏 */
+    hideInBreadcrumb?: number
+    /** 子菜单：0-显示;1-隐藏 */
+    hideChildrenInMenu?: number
+    /** 保活：0：非 1：是 */
+    keepAlive?: number
+    /** 全连接跳转模式 */
+    target?: string
+    /** 权限字段 */
+    code?: string
+    /** 资源类型：0：目录 1：菜单 2：按钮 */
+    type?: number
+    /** 排序 */
+    orderNum?: number
   }
 
   type MenuQueryRequest = {
@@ -194,106 +195,96 @@ declare namespace API {
     sortOrder?: string
     /** 菜单名称 */
     title?: string
-    /** 权限字段 */
-    code?: string
-    /** 路由名称 */
-    name?: string
-    /** 路由path */
+    /** 地址 */
     path?: string
-    /** 组件路径 */
-    url?: string
+    /** 组件 */
+    component?: string
     /** 重定向路径 */
     redirect?: string
+    /** 是否固定页签 */
+    affix?: number
+    /** 路由名称 */
+    name?: string
+    /** 跳转路径 */
+    url?: string
+    /** 权限字段 */
+    code?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
-    /** 是否套用iframe */
-    isIframe?: number
-    /** 菜单可见：0-显示;1-隐藏 */
-    hideInMenu?: number
-    /** 图标 */
-    icon?: string
-    /** 国际化 */
-    locale?: string
-    /** 父菜单名称 */
-    parentName?: string
   }
 
   type MenuUpdateRequest = {
     /** id */
     id?: number
-    /** 父ID */
-    parentId?: number
     /** 菜单名称 */
     title?: string
-    /** 权限字段 */
-    code?: string
-    /** 路由名称 */
-    name?: string
-    /** 路由path */
+    /** 菜单图标 */
+    icon?: string
+    /** 地址 */
     path?: string
-    /** 组件路径 */
-    url?: string
+    /** 组件 */
+    component?: string
     /** 重定向路径 */
     redirect?: string
+    /** 是否固定页签 */
+    affix?: number
+    /** 路由名称 */
+    name?: string
+    /** 跳转路径 */
+    url?: string
+    /** 权限字段 */
+    code?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
-    /** 是否套用iframe */
-    isIframe?: number
-    /** 菜单可见：0-显示;1-隐藏 */
-    hideInMenu?: number
-    /** 图标 */
-    icon?: string
-    /** 国际化 */
-    locale?: string
-    /** 父菜单名称 */
-    parentName?: string
-    /** 子菜单 */
-    children?: Menu[]
-    /** 值 */
-    value?: number
-    /** 文本 */
-    label?: string
   }
 
   type MenuVO = {
     /** 资源视图（脱敏） */
     id?: number
-    /** 父ID */
-    parentId?: number
     /** 菜单名称 */
     title?: string
-    /** 权限字段 */
-    code?: string
-    /** 路由名称 */
-    name?: string
-    /** 路由path */
+    /** 菜单图标 */
+    icon?: string
+    /** 地址 */
     path?: string
-    /** 组件路径 */
-    url?: string
+    /** 组件 */
+    component?: string
     /** 重定向路径 */
     redirect?: string
+    /** 是否固定页签 */
+    affix?: boolean
+    /** 父ID */
+    parentId?: number
+    /** 路由名称 */
+    name?: string
+    /** 菜单可见：0-显示;1-隐藏 */
+    hideInMenu?: boolean
+    /** 跳转路径 */
+    url?: string
+    /** 面包屑：0-显示;1-隐藏 */
+    hideInBreadcrumb?: boolean
+    /** 子菜单：0-显示;1-隐藏 */
+    hideChildrenInMenu?: boolean
+    /** 保活：0：非 1：是 */
+    keepAlive?: boolean
+    /** 全连接跳转模式 */
+    target?: string
+    /** 子菜单 */
+    children?: MenuVO[]
+    /** 父菜单 */
+    matched?: MenuVO[]
+    /** 父级的key */
+    parentKeys?: string[]
+    /** 权限字段 */
+    code?: string
     /** 资源类型：0：目录 1：菜单 2：按钮 */
     type?: number
-    /** 是否套用iframe */
-    isIframe?: number
-    /** 菜单可见：0-显示;1-隐藏 */
-    hideInMenu?: number
-    /** 图标 */
-    icon?: string
-    /** 国际化 */
-    locale?: string
-    /** 父菜单名称 */
-    parentName?: string
+    /** 排序 */
+    orderNum?: number
     /** 创建时间 */
     createTime?: string
     /** 更新时间 */
     updateTime?: string
-    /** 子菜单 */
-    children?: MenuVO[]
-    /** 值 */
-    value?: number
-    /** 文本 */
-    label?: string
   }
 
   type OrderItem = {

@@ -5,7 +5,7 @@ const Layout = () => import('@/layouts/index.vue')
 const staticRoutes: Array<RouteRecordRaw> = [
   {
     path: '/login',
-    component: () => import('@/pages/common/login.vue'),
+    component: () => import('@/views/common/login.vue'),
     meta: {
       title: '登录',
     },
@@ -13,7 +13,7 @@ const staticRoutes: Array<RouteRecordRaw> = [
   {
     path: '/401',
     name: 'Error401',
-    component: () => import('@/pages/exception/401.vue'),
+    component: () => import('@/views/exception/401.vue'),
     meta: {
       title: '授权已过期',
     },
@@ -26,14 +26,14 @@ const staticRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '/common/redirect',
-        component: () => import('@/pages/common/route-view.vue'),
+        component: () => import('@/views/common/routeView.vue'),
         name: 'CommonRedirect',
         redirect: '/redirect',
         children: [
           {
             path: '/redirect/:path(.*)',
             name: 'RedirectPath',
-            component: () => import('@/pages/common/redirect.vue'),
+            component: () => import('@/views/common/redirect.vue'),
           },
         ],
       },
@@ -44,7 +44,7 @@ const staticRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: '找不到页面',
     },
-    component: () => import('@/pages/exception/error.vue'),
+    component: () => import('@/views/exception/error.vue'),
   },
 ]
 export default staticRoutes

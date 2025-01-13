@@ -1,5 +1,5 @@
 // @ts-ignore
-/* eslint-disable */
+
 import request from '@/request.ts'
 
 /** 添加资源 POST /rest/sys/menu/add */
@@ -37,7 +37,7 @@ export async function getMenuList(options?: { [key: string]: any }) {
 /** 分页获取资源列表 POST /rest/sys/menu/listPage */
 export async function listPermissionPage(
   body: API.MenuQueryRequest,
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
   return request<API.BaseResponsePageMenu>('/rest/sys/menu/listPage', {
     method: 'POST',

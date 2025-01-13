@@ -1,5 +1,5 @@
 // @ts-ignore
-/* eslint-disable */
+
 import request from '@/request.ts'
 
 /** 获取当前登录用户 GET /rest/sys/auth/getLoginUser */

@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { theme as antdTheme } from 'ant-design-vue/es'
-import { LayoutSetting } from '../../types/layout.ts'
 import globalSetting from '@/config/global-setting.ts'
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
+import { LayoutSetting } from '@/layouts/basic/typing.ts'
 
 export const useAppStore = defineStore('app', () => {
   const layoutSetting = reactive<LayoutSetting>(globalSetting)
@@ -15,5 +15,8 @@ export const useAppStore = defineStore('app', () => {
     },
     components: {},
   })
-  return { layoutSetting, theme: themeConfig }
+  const toggleCollapsed = (collapsed: boolean) => {
+    layoutSetting.collapsed = collapsed
+  }
+  return { layoutSetting, theme: themeConfig, toggleCollapsed }
 })

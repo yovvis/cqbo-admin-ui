@@ -1,22 +1,22 @@
 const routerModules = import.meta.glob([
-  '@/pages/**/*.vue',
-  '!@/pages/**/*copy.vue',
-  '!@/pages/**/component',
-  '!@/pages/**/components',
-  '!@/pages/**/composables',
-  '!@/pages/**/hooks',
-  '!@/pages/**/locales',
-  '!@/pages/**/modules',
-  '!@/pages/**/plugins',
-  '!@/pages/**/tests',
-  '!@/pages/**/test',
-  '!@/pages/common',
+  '@/views/**/*.vue',
+  '!@/views/**/*copy.vue',
+  '!@/views/**/component',
+  '!@/views/**/components',
+  '!@/views/**/composables',
+  '!@/views/**/hooks',
+  '!@/views/**/locales',
+  '!@/views/**/modules',
+  '!@/views/**/plugins',
+  '!@/views/**/tests',
+  '!@/views/**/test',
+  '!@/views/common',
 ])
 export const basicRouteMap = {
   // 一般用于存在子集的页面
-  RouteView: () => import('@/layouts/components/routeView.vue'),
+  RouteView: () => import('@/layouts/components/RouteView.vue'),
   // 空页面
-  ComponentError: () => import('@/pages/exception/componentError.vue'),
+  ComponentError: () => import('@/views/exception/componentError.vue'),
 }
 
 function checkEager(module: any) {

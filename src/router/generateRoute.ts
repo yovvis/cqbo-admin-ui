@@ -1,4 +1,4 @@
-import { MenuData, MenuDataItem } from '@/layouts/pro/typing.ts'
+import { MenuData } from '@/layouts/basic/typing.ts'
 import type { RouteRecordRaw } from 'vue-router'
 import { basicRouteMap, getRouterModule } from '@/router/routeModules.ts'
 import dynamicRoutes from '@/router/dynamicRoutes.ts'
@@ -11,16 +11,11 @@ let cache_key = 1
 
 const getCacheKey = () => `Cache_Key_${cache_key++}`
 
-function renderTitle(route: RouteRecordRaw) {
-  const { title } = route.meta || {}
-  return title ?? ''
-}
-
 function formatMenu(route: RouteRecordRaw, path?: string) {
   return {
     id: route.meta?.id,
     parentId: route.meta?.parentId,
-    title: () => renderTitle(route),
+    title: route.meta?.title || '',
     icon: route.meta?.icon || '',
     path: path ?? route.path,
     hideInMenu: route.meta?.hideInMenu || false,
@@ -32,7 +27,7 @@ function formatMenu(route: RouteRecordRaw, path?: string) {
     name: route.name as string,
     url: route.meta?.url || '',
     target: route.meta?.target || '_blank',
-  }
+  } as API.MenuVO
 }
 
 /**
@@ -40,7 +35,7 @@ function formatMenu(route: RouteRecordRaw, path?: string) {
  */
 export function generateTreeRoutes(menus: MenuData) {
   const routeDataMap = new Map<string | number, RouteRecordRaw>()
-  const menuDataMap = new Map<string | number, MenuDataItem>()
+  const menuDataMap = new Map<string | number, API.MenuVO>()
   for (const menuItem of menus) {
     if (!menuItem.id) continue
     const route = {
@@ -61,7 +56,6 @@ export function generateTreeRoutes(menus: MenuData) {
         hideChildrenInMenu: menuItem?.hideChildrenInMenu,
         hideInBreadcrumb: menuItem?.hideInBreadcrumb,
         target: menuItem?.target,
-        locale: menuItem?.locale,
       },
     } as RouteRecordRaw
     const menu = formatMenu(route)
@@ -128,26 +122,21 @@ export async function generateRoutes() {
 }
 
 // 本地静态路由生成菜单的信息
-export function genRoutes(routes: RouteRecordRaw[], parent?: MenuDataItem) {
+export function genRoutes(routes: RouteRecordRaw[], parent?: API.MenuVO) {
   const menuData: MenuData = []
   routes.forEach((route) => {
     let path = route.path
     if (!path.startsWith('/') && !isUrl(path)) {
       // 判断当前是不是以 /开头，如果不是就表示当前的路由地址为不完全的地址
-      if (parent)
-        path = `${parent.path}/${path}`
-      else
-        path = `/${path}`
+      if (parent) path = `${parent.path}/${path}`
+      else path = `/${path}`
     }
     // 判断是不是存在name，如果不存在name的情况下，自动补充一个自定义的name，为了更容易的去实现保活的功能，name是必须的
-    if (!route.name)
-      route.name = getCacheKey()
-    const item: MenuDataItem = formatMenu(route, path)
+    if (!route.name) route.name = getCacheKey()
+    const item: API.MenuVO = formatMenu(route, path)
     item.children = []
-    if (route.children && route.children.length)
-      item.children = genRoutes(route.children, item)
-    if (item.children?.length === 0)
-      delete item.children
+    if (route.children && route.children.length) item.children = genRoutes(route.children, item)
+    if (item.children?.length === 0) delete item.children
     menuData.push(item)
   })
   return menuData
@@ -155,36 +144,35 @@ export function genRoutes(routes: RouteRecordRaw[], parent?: MenuDataItem) {
 
 function checkComponent(component: RouteRecordRaw['component']) {
   for (const componentKey in basicRouteMap) {
-    if (component === (basicRouteMap as any)[componentKey])
-      return undefined
+    if (component === (basicRouteMap as any)[componentKey]) return undefined
   }
   return component
 }
 
-
 // 路由拉平处理
-function flatRoutes(routes: RouteRecordRaw[], parentName?: string, parentComps: RouteRecordRaw['component'][] = []) {
+function flatRoutes(
+  routes: RouteRecordRaw[],
+  parentName?: string,
+  parentComps: RouteRecordRaw['component'][] = [],
+) {
   const flatRouteData: RouteRecordRaw[] = []
   for (const route of routes) {
     const parentComponents = [...parentComps]
     const currentRoute = omit(route, ['children']) as RouteRecordRaw
-    if (!currentRoute.meta)
-      currentRoute.meta = {}
-    if (parentName)
-      currentRoute.meta.parentName = parentName
-    if (parentComponents.length > 0)
-      currentRoute.meta.parentComps = parentComponents
+    if (!currentRoute.meta) currentRoute.meta = {}
+    if (parentName) currentRoute.meta.parentName = parentName
+    if (parentComponents.length > 0) currentRoute.meta.parentComps = parentComponents
     currentRoute.meta.originPath = currentRoute.path
     flatRouteData.push(currentRoute)
     if (route.children && route.children.length) {
       const comp = checkComponent(route.component)
-      if (comp)
-        parentComponents.push(comp)
+      if (comp) parentComponents.push(comp)
       flatRouteData.push(...flatRoutes(route.children, route.name as string, [...parentComponents]))
     }
   }
   return flatRouteData
 }
+
 export function generateFlatRoutes(routes: RouteRecordRaw[]) {
   const flatRoutesList = flatRoutes(routes)
   // 拿到拉平后的路由，然后统一添加一个父级的路由,通过这层路由实现保活的功能
