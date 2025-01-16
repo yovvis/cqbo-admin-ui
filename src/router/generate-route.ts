@@ -1,7 +1,6 @@
-import { MenuData } from '@/layouts/basic/typing.ts'
 import type { RouteRecordRaw } from 'vue-router'
-import { basicRouteMap, getRouterModule } from '@/router/routeModules.ts'
-import dynamicRoutes from '@/router/dynamicRoutes.ts'
+import { basicRouteMap, getRouterModule } from '@/router/route-modules.ts'
+import dynamicRoutes from '@/router/dynamic-routes.ts'
 import { isUrl } from '@v-c/utils'
 import { ROOT_ROUTE_REDIRECT_PATH } from '@/router/constant.ts'
 import { omit } from 'lodash-es'
@@ -33,7 +32,7 @@ function formatMenu(route: RouteRecordRaw, path?: string) {
 /**
  * 请求后端的数据获取到的菜单的信息，默认数据是拉平的，需要对数据进行树结构的整理
  */
-export function generateTreeRoutes(menus: MenuData) {
+export function generateTreeRoutes(menus: API.MenuVO[]) {
   const routeDataMap = new Map<string | number, RouteRecordRaw>()
   const menuDataMap = new Map<string | number, API.MenuVO>()
   for (const menuItem of menus) {
@@ -63,7 +62,7 @@ export function generateTreeRoutes(menus: MenuData) {
     menuDataMap.set(menuItem.id, menu)
   }
   const routeData: RouteRecordRaw[] = []
-  const menuData: MenuData = []
+  const menuData: API.MenuVO[] = []
 
   for (const menuItem of menus) {
     if (!menuItem.id) continue
@@ -123,7 +122,7 @@ export async function generateRoutes() {
 
 // 本地静态路由生成菜单的信息
 export function genRoutes(routes: RouteRecordRaw[], parent?: API.MenuVO) {
-  const menuData: MenuData = []
+  const menuData: API.MenuVO[] = []
   routes.forEach((route) => {
     let path = route.path
     if (!path.startsWith('/') && !isUrl(path)) {
@@ -185,38 +184,4 @@ export function generateFlatRoutes(routes: RouteRecordRaw[]) {
     children: flatRoutesList,
   }
   return [parentRoute]
-}
-
-/**
- * 生成菜单项
- * @param routes
- */
-export const getMenuItems: any = (routes: Array<RouteRecordRaw>) => {
-  return routes.map((route) => {
-    // 处理菜单项基本信息
-    return {
-      key: route.path,
-      label: route.meta?.title || '',
-      title: route.meta?.title || '',
-      // 动态图标处理
-      icon: route.meta?.icon ? h(Icon, { icon: route.meta?.icon as string, width: '1.3em' }) : null,
-      children: route.children ? getMenuItems(route.children) : null,
-    }
-  })
-}
-/**
- * 过滤路由
- * @param routes
- */
-export const filterRoutes = (routes: Array<RouteRecordRaw>) => {
-  return routes.filter((item) => {
-    if (item.meta?.hideInMenu) {
-      return false
-    }
-    // 递归过滤 children
-    if (item?.children) {
-      item.children = filterRoutes(item.children)
-    }
-    return true
-  })
 }

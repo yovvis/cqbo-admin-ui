@@ -1,5 +1,3 @@
-import { LayoutSetting } from '../../types/layout.ts'
-
 export default {
   title: '亿智狐管理系统',
   theme: 'light',
@@ -26,6 +24,6 @@ export default {
   leftCollapsed: true,
   compactAlgorithm: false,
   headerHeight: 48,
-  copyright: 'CQBO Team 2024',
+  copyright: 'Yovvis 2025',
   animationName: 'none',
-} as LayoutSetting
+}

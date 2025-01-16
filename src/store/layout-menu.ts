@@ -1,6 +1,6 @@
 import { isUrl } from '@v-c/utils'
 import { defineStore } from 'pinia'
-import { MenuData } from '@/layouts/basic/typing.ts'
+import { MenuData } from '@/layouts/basic-layout/typing.ts'
 import { useUserStore } from '@/store/user.ts'
 import { useAppStore } from '@/store/app.ts'
 import { deepFind } from '@/utils/tree.ts'

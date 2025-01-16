@@ -43,8 +43,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { proLayoutProps } from '@/layouts/basic/typing.ts'
-import { useLayoutProvider } from '@/layouts/basic/context.ts'
+import { proLayoutProps } from '@/layouts/basic-layout/typing.ts'
+import { useLayoutProvider } from '@/layouts/basic-layout/context.ts'
 import SiderMenu from '@/layouts/components/SiderMenu.vue'
 
 defineOptions({

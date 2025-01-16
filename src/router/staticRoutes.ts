@@ -19,27 +19,6 @@ const staticRoutes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: '/common',
-    name: 'LayoutBasicRedirect',
-    component: Layout,
-    redirect: '/common/redirect',
-    children: [
-      {
-        path: '/common/redirect',
-        component: () => import('@/views/common/routeView.vue'),
-        name: 'CommonRedirect',
-        redirect: '/redirect',
-        children: [
-          {
-            path: '/redirect/:path(.*)',
-            name: 'RedirectPath',
-            component: () => import('@/views/common/redirect.vue'),
-          },
-        ],
-      },
-    ],
-  },
-  {
     path: '/:pathMatch(.*)',
     meta: {
       title: '找不到页面',

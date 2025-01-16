@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { theme as antdTheme } from 'ant-design-vue/es'
 import globalSetting from '@/config/global-setting.ts'
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
-import { LayoutSetting } from '@/layouts/basic/typing.ts'
+import { LayoutSetting } from '@/layouts/basic-layout/typing.ts'
 
 export const useAppStore = defineStore('app', () => {
   const layoutSetting = reactive<LayoutSetting>(globalSetting)

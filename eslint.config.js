@@ -23,6 +23,7 @@ export default [
       '@typescript-eslint/ban-ts-comment': 'off', // 关闭 ban-ts-comment 规则
       '@typescript-eslint/no-unused-expressions': 'off', // 关闭 no-unused-expressions 规则
       '@typescript-eslint/no-unused-vars': 'off', //关闭  no-unused-vars 规则
+      '@typescript-eslint/no-empty-object-type': 'off', // 关闭 no-empty-object-type 规则
     },
   },
 ]

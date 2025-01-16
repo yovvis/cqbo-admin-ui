@@ -2,6 +2,7 @@
 const route = useRoute()
 const url = computed(() => route?.meta?.url)
 const loading = ref(true)
+
 function finishLoading() {
   loading.value = false
 }
@@ -36,8 +37,8 @@ function finishLoading() {
   </div>
 </template>
 
-<style>
-.ant-pro-iframe-wrap {
+<style scoped lang="scss">
+:deep(.ant-pro-iframe-wrap) {
   .ant-spin-container {
     height: 100% !important;
     width: 100% !important;
