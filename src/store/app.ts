@@ -2,10 +2,9 @@ import { defineStore } from 'pinia'
 import { theme as antdTheme } from 'ant-design-vue/es'
 import globalSetting from '@/config/global-setting.ts'
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
-import { LayoutSetting } from '@/layouts/basic-layout/typing.ts'
 
 export const useAppStore = defineStore('app', () => {
-  const layoutSetting = reactive<LayoutSetting>(globalSetting)
+  const layoutSetting = reactive(globalSetting)
   // 加上 any就是解决编辑器无法序列化过长的类型
   const themeConfig = reactive<ThemeConfig | any>({
     algorithm: [antdTheme.defaultAlgorithm],

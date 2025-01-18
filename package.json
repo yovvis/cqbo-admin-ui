@@ -19,12 +19,10 @@
     "openapi": "openapi2ts openapi2ts.config.ts"
   },
   "dependencies": {
-    "@v-c/utils": "^0.0.26",
     "@vueuse/core": "^12.4.0",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.7.9",
     "lodash-es": "^4.17.21",
-    "mitt": "^3.0.1",
     "pinia": "^2.3.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

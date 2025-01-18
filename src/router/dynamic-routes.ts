@@ -34,7 +34,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/userlist',
         name: 'userlist',
-        component: () => import('@/views/system/user/user-list.vue'),
+        component: () => import('@/views/system/user/UserList.vue'),
         meta: {
           title: '用户管理',
         },
@@ -42,7 +42,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/rolelist',
         name: 'rolelist',
-        component: () => import('@/views/system/role/role-list.vue'),
+        component: () => import('@/views/system/role/RoleList.vue'),
         meta: {
           title: '角色管理',
         },
@@ -50,7 +50,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: '/system/menulist',
         name: 'menulist',
-        component: () => import('@/views/system/menu/menu-list.vue'),
+        component: () => import('@/views/system/menu/MenuList.vue'),
         meta: {
           title: '菜单管理',
         },
@@ -68,7 +68,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: '/user/login',
     name: 'userlogin',
-    component: () => import('@/views/account/user-center.vue'),
+    component: () => import('@/views/account/UserCenter.vue'),
     meta: {
       hideInMenu: true,
     },
@@ -76,7 +76,7 @@ const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: '/user/register',
     name: 'userregister',
-    component: () => import('@/views/account/user-setting.vue'),
+    component: () => import('@/views/account/UserSetting.vue'),
     meta: {
       hideInMenu: true,
     },

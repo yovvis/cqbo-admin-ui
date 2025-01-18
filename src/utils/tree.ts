@@ -1,6 +1,7 @@
 interface Tree {
   children?: Tree[]
 }
+
 /**
  * 递归查找树节点
  * @param pred 查找条件函数

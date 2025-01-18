@@ -5,7 +5,7 @@ const Layout = () => import('@/layouts/index.vue')
 const staticRoutes: Array<RouteRecordRaw> = [
   {
     path: '/login',
-    component: () => import('@/views/common/login.vue'),
+    component: () => import('@/views/common/Login.vue'),
     meta: {
       title: '登录',
     },
